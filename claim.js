@@ -55,10 +55,11 @@ const getNearBalance = async (accountId, privateKey) => {
 };
 
 const processAccount = async (accountId, privateKey, delayInHours) => {
+  let NearBalanceUser = 0
   while (true) {
     try {
       const mineAndUpdate = async () => {
-        const NearBalanceUser = await getNearBalance(accountId, privateKey);
+        NearBalanceUser = await getNearBalance(accountId, privateKey);
 
         twisters.put(accountId, {
           text: `
